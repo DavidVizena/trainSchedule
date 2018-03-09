@@ -3,3 +3,11 @@
     box-sizing: border-box;
 }
 /*  */
+.displayTrains{
+    position: relative;
+    left: 0;
+}
+.userInputTable{
+    position: relative;
+    right: 0;
+}
