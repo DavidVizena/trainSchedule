@@ -1,8 +1,7 @@
 $(document).ready(function () {
-
-
-
-
-
-    // Closing tag for document.ready
+    
+    
+    
+    
+    // closing tag for document.ready
 });
