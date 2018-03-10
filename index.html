@@ -24,71 +24,84 @@
     <!-- Jumbotron -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4 text-center">Train Schedule</h1>
-            <p class="lead text-center">See your trains information here.</p>
+            <h1 class="display-4 text-center font-weight-bold">Train Schedule</h1>
+            <p class="lead text-center font-weight-bold">See your trains information here.</p>
         </div>
     </div>
     <!--  -->
     <!-- Main Grid System for train table -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-8">
-                <!-- Table to display trains     -->
-                <table class="table table-striped">
+            <div class="col-sm-9">
+                <!-- Table for trains -->
+                <div class="card">
+                    <div class="card-header font-weight-bold">
+                        Train Schedule
+                    </div>
+                    <div class="card-body">
+                        <!-- Train table     -->
+                        <table class="table table-striped">
                             <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                              </tr>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                              </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             </tbody>
-                          </table>
-                          <!--  -->
+                        </table>
+                        <!--  -->
+                    </div>
+                </div>
+                <!--  -->
             </div>
-            <div class="col-sm-4">
-                <!-- Input for user trains    -->
-                <form>
+            <div class="col-sm-3">
+                <!-- User Input Form     -->
+                <div class="card">
+                    <div class="card-header font-weight-bold">
+                        Add a Train
+                    </div>
+                    <div class="card-body">
+                        <!-- Add a train form    -->
+                        <form>
                             <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <label for="trainName">Train Name</label>
+                                <input type="text" class="form-control" id="trainNameInput" aria-describedby="trainName" placeholder="Train Name">
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputPassword1">Password</label>
-                              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <label for="destination">Destination</label>
+                                <input type="text" class="form-control" id="trainDestinationInput" placeholder="Train Destination">
                             </div>
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <div class="form-group">
+                                <label for="firstTrainTime">First Train Time(HH:mm - military time)</label>
+                                <input type="text" class="form-control" id="firstTrainTimeInput" placeholder="Train Time">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                          </form>
-                          <!--  -->
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Frequency</label>
+                                <input type="text" class="form-control" id="frequencyInput" placeholder="Train Frequency">
+                            </div>
+
+                            <button type="submit" id="addTrainBtn" class="btn btn-primary">Add a Train</button>
+                        </form>
+                        <!--  -->
+                    </div>
+                </div>
+                <!--  -->
             </div>
         </div>
     </div>
     <!--  -->
 </body>
+
 
 </html>
