@@ -14,6 +14,20 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- JQUERY SCRIPT LINKS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- Firebase Link -->
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDbh8UvQKT2CDm_6HvM6CB6YZxlqIyO9Ec",
+    authDomain: "trainschedule-edd4e.firebaseapp.com",
+    databaseURL: "https://trainschedule-edd4e.firebaseio.com",
+    projectId: "trainschedule-edd4e",
+    storageBucket: "trainschedule-edd4e.appspot.com",
+    messagingSenderId: "318903342472"
+  };
+  firebase.initializeApp(config);
+</script>
     <!-- PERSONAL JAVASCRIPT SHEET -->
     <script src="./assets/js/app.js"></script>
 
@@ -50,7 +64,7 @@
                                     <th scope="col">Minutes Away</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tableBody">
                                 <tr>
                                     <th scope="row"></th>
                                     <td></td>
@@ -74,21 +88,21 @@
                     <div class="card-body">
                         <!-- Add a train form    -->
                         <form>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="trainName">Train Name</label>
-                                <input type="text" class="form-control" id="trainNameInput" aria-describedby="trainName" placeholder="Train Name">
+                                <input type="text" class="form-control textbox" id="trainNameInput" aria-describedby="trainName" placeholder="Train Name">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="destination">Destination</label>
-                                <input type="text" class="form-control" id="destinationInput" placeholder="Train Destination">
+                                <input type="text" class="form-control textbox" id="destinationInput" placeholder="Train Destination">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="firstTrainTime">First Train Time(HH:mm - military time)</label>
-                                <input type="text" class="form-control" id="firstTrainTimeInput" placeholder="Train Time">
+                                <input type="time" class="form-control textbox" id="firstTrainTimeInput" placeholder="Train Time">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Frequency</label>
-                                <input type="text" class="form-control" id="frequencyInput" placeholder="Train Frequency">
+                            <div class="form-group ">
+                                <label for="frequency">Frequency</label>
+                                <input type="text" class="form-control textbox" id="frequencyInput" placeholder="Train Frequency">
                             </div>
 
                             <button type="submit" id="addTrainBtn" class="btn btn-primary">Add a Train</button>

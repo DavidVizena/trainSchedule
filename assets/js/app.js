@@ -1,5 +1,8 @@
 $(document).ready(function () {
-
+    // Global vars
+    var database = firebase.database();
+    var ref = database.ref("trains");
+    // 
 
     $("#addTrainBtn").on("click", function (e) {
         e.preventDefault();
@@ -9,30 +12,38 @@ $(document).ready(function () {
         var firstTrainTime = $("#firstTrainTimeInput").val().trim();
         var frequency = $("#frequencyInput").val().trim();
         // 
-        // Stores all vars into local storage
-        localStorage.setItem("item-trainName", trainName);
-        localStorage.setItem("item-destination", destination);
-        localStorage.setItem("item-firstTrainTime", firstTrainTime);
-        localStorage.setItem("item-frequency", frequency);
+        // Making a obj called train
+        var train = {
+            trainName: trainName,
+            destination: destination,
+            firstTrainTime: firstTrainTime,
+            frequency: frequency
+        }
+        ref.push(train);
         // 
+        ref.once("value", getData, errData);
+
+        $(".textbox").val("");
     })
+    // fucntion that will break the object down into an array
+    function getData(train) {
+        var trains = train.val();
+        var keys = Object.keys(trains);
+        for (i = 0; i < keys.length; i++) {
+            var tRow = $("<tr>");
+            var k = keys[i];
+            $("<td scope='col'>").text(trains[k].trainName).appendTo(tRow);
+            $("<td scope='col'>").text(trains[k].destination).appendTo(tRow);
+            $("<td scope='col'>").text(trains[k].firstTrainTime).appendTo(tRow);
+            $("<td scope='col'>").text(trains[k].frequency).appendTo(tRow);
+            $("#tableBody").append(tRow);
+        };
+    }
 
-    function makeRow() {
-        var tBody = $("tbody");
-        var tRow = $("<tr>");
-        // makes a td and gets item from local 
-        var trainName = $("<td>").text(localStorage.getItem('item-trainName'));
-        var destination = $("<td>").text(localStorage.getItem('item-destination'));
-        var firstTrainTime = $("<td>").text(localStorage.getItem('item-firstTrainTime'));
-        var frequency = $("<td>").text(localStorage.getItem('item-frequency'));
-        // 
-        // Append to page
-        tRow.append(trainName, destination, firstTrainTime, frequency);
-        tBody.append(tRow);
-        // 
-    };
-    makeRow();
-
-
+    function errData(err) {
+        console.log("error")
+        console.log(err);
+    }
+    // 
     // closing tag for document.ready
 });
