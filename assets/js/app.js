@@ -2,8 +2,7 @@ $(document).ready(function () {
     // Global vars
     var database = firebase.database();
     var ref = database.ref("trains");
-    // var time = moment().format('LT');
-    // console.log(time);
+    var time = moment().format('LT');
     // 
 
     $("#addTrainBtn").on("click", function (e) {
