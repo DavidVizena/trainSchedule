@@ -2,6 +2,8 @@ $(document).ready(function () {
     // Global vars
     var database = firebase.database();
     var ref = database.ref("trains");
+    // var time = moment().format('LT');
+    // console.log(time);
     // 
 
     $("#addTrainBtn").on("click", function (e) {
@@ -22,20 +24,24 @@ $(document).ready(function () {
         ref.push(train);
         // 
         ref.once("value", getData, errData);
-
+        // Clears the form
         $(".textbox").val("");
     })
     // fucntion that will break the object down into an array
     function getData(train) {
         var trains = train.val();
         var keys = Object.keys(trains);
+        // 
         for (i = 0; i < keys.length; i++) {
             var tRow = $("<tr>");
             var k = keys[i];
+            // These 2 work fine its simple copy and paste to the dom
             $("<td scope='col'>").text(trains[k].trainName).appendTo(tRow);
             $("<td scope='col'>").text(trains[k].destination).appendTo(tRow);
+            $("<td scope='col'>").text(trains[k].frequency + " min").appendTo(tRow);
+            // These I need to add math to prior to DOM injection
             $("<td scope='col'>").text(trains[k].firstTrainTime).appendTo(tRow);
-            $("<td scope='col'>").text(trains[k].frequency).appendTo(tRow);
+
             $("#tableBody").append(tRow);
         };
     }
