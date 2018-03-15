@@ -3,6 +3,8 @@ $(document).ready(function () {
     var database = firebase.database();
     var ref = database.ref("trains");
     // 
+    
+    ref.on("value", getData, errData);
     $("#addTrainBtn").on("click", function (e) {
         e.preventDefault();
         // Sets vars that calls and trims the inputs from the user
